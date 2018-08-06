@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-12">
+      <div class="card cont-shadow">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-1 col-3">
+              <i class="fa fa-user edit-header-icon"></i>
+            </div>
+            <div class="col-md-11 col-9">
+              <h3 class="card-title mb-0 mt-2 ml-2">Change your password</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body edit-card-body">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= devise_error_messages! %>
+            <%= f.hidden_field :reset_password_token %>
+
+            <div class="form-group">
+              <%= f.label :password, "New password" %><br />
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+              <% end %>
+              <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation, "Confirm new password" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Change my password", class: "btn btn-info" %>
+            </div>
+            <%= render "users/shared/links" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

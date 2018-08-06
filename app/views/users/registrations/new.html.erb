@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-12">
+      <h3 class="text-center register-text">RMPH WORLD (SECURED REGISTER)</h3>
+      <div class="card cont-shadow">
+        <div class="card-header new-card-header">
+          <div class="row">
+            <div class="col-md-1 col-3">
+              <i class="fa fa-unlock-alt header-icon"></i>
+            </div>
+            <div class="col-md-11 col-9">
+              <h3 class="card-title mb-0 mt-2">Register</h3>
+              <small class="font-weight-bold">Please enter your data to register.</small>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>Sponser ID</label>
+                <%= f.text_field :sponser_id, class: "form-control", placeholder: "Upline Mobile Number" %>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Mobile Number</label>
+                <%= f.number_field :mobile_number, class: "form-control", placeholder: "Mobile Number Only" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+               <label>User Name</label>
+                <%= f.text_field :user_name, class: "form-control", placeholder: "User Name" %>
+              </div>
+              <div class="col-md-6 form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>Password</label>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Password Confirmation</label>
+                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="actions col-md-6">
+                <%= f.submit "Register", class: "btn btn-warning text-white" %>
+                <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-success" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
