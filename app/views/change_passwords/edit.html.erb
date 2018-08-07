@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3 col-12">
+    <div class="col-md-12 col-12">
       <div class="card cont-shadow">
         <div class="card-header">
           <div class="row">
@@ -13,23 +13,27 @@
           </div>
         </div>
         <div class="card-body edit-card-body">
-          <%= form_for(@user, :url => { :action => "change_password" } ) do |f| %>
-            <div class="form-group">
-              <%= f.label :current_password %> 
-              <%= f.password_field :current_password, class: "form-control", placeholder: "Current Password" %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= form_for(@user, :url => { :action => "change_password" } ) do |f| %>
+                <div class="form-group">
+                  <%= f.label :current_password %> 
+                  <%= f.password_field :current_password, class: "form-control", placeholder: "Current Password" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :password, "Password" %>
+                  <%= f.password_field :password, class: "form-control", placeholder: "New Password"  %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :password_confirmation %>
+                  <%= f.password_field :password_confirmation , class: "form-control", placeholder: "Confirm Password"%>
+                </div>
+                <div class="action_container">
+                  <%= f.submit "Update Password", class: "btn btn-info" %>
+                </div>
+              <% end %>
             </div>
-            <div class="form-group">
-              <%= f.label :password, "Password" %>
-              <%= f.password_field :password, class: "form-control", placeholder: "New Password"  %>
-            </div>
-            <div class="form-group">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation , class: "form-control", placeholder: "Confirm Password"%>
-            </div>
-            <div class="action_container">
-              <%= f.submit "Update Password", class: "btn btn-info" %>
-            </div>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>

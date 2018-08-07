@@ -1,9 +1,10 @@
 class ChangePasswordsController < ApplicationController
+  layout 'admin'
   def edit
-      @user = current_user
-    end
+    @user = current_user
+  end
 
-   def change_password
+  def change_password
     @user = current_user
     if @user.update_with_password(user_params)
       # Sign in the user by passing validation in case their password changed
