@@ -63,3 +63,13 @@ input::placeholder {
 .table thead th {
   font-weight: 900;
 }
+#demo {
+  background-color: #51affe;
+}
+.collapsed .fa-angle-down {
+  webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.fa-angle-down {
+  margin-top: 7%;
+}
