@@ -1,0 +1,129 @@
+<header class="topbar">
+  <nav class="navbar top-navbar navbar-expand-md navbar-light">
+    <!-- ============================================================== -->
+    <!-- Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-header">
+      <%= link_to "admin_dashboard_path", class: 'navbar-brand' do %>
+        <!-- Logo icon -->
+        <b>
+          <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+          <!-- Dark Logo icon -->
+          <%= image_tag 'only-v.png', class: 'dark-logo', height: '30px', alt: 'Virtualspirit.me' %>
+          <!-- Light Logo icon -->
+          <%= image_tag 'only-v.png', class: 'light-logo', height: '30px', alt: 'Virtualspirit.me' %>
+        </b>
+        <span style="">
+          <!-- dark Logo text -->
+          <%= image_tag 'only-v.png', class: 'dark-logo', height: '45px' %>
+          <!-- Light Logo text -->
+          <%= image_tag 'only-v.png', class: 'light-logo', height: '45px' %>
+        </span>
+        <!--End Logo icon -->
+      <% end %>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-collapse">
+      <!-- ============================================================== -->
+      <!-- toggle and nav items -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav mr-auto">
+        <!-- This is  -->
+        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+      </ul>
+      <!-- ============================================================== -->
+      <!-- User profile and search -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav my-lg-0">
+
+        <li class="nav-item hidden-xs-down search-box"> 
+          <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)">
+            <i class="ti-search"></i>
+          </a>
+          <form class="app-search">
+            <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> 
+          </form>
+        </li>
+
+        <!-- ================================================================= -->
+        <!-- Notification -->
+        <!-- ================================================================= -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
+            <div id="notification-point" class="notify hide"> <span class="heartbit"></span> <span class="point"></span> </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
+            <ul>
+              <li>
+                <div class="drop-title">Notifications</div>
+              </li>
+              <li>
+                <div id="notification-wrapper" class="message-center">
+                  <!-- Message -->
+                  <%#= render partial: 'partials/notification_item', collection: Notification.all_unread.order(created_at: :desc).limit(5), as: :notif %>
+                  <!-- Message -->
+                </div>
+              </li>
+              <li>
+                <%= link_to "#", class: 'nav-link text-center' do %>
+                  <strong>Check all notifications</strong>
+                  <i class="fa fa-angle-right"></i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Profile -->
+        <!-- ============================================================== -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag 'nopicture.png', alt: 'user', class: 'profile-pic' %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right animated flipInY">
+            <ul class="dropdown-user">
+              <li>
+                <div class="dw-user-box">
+                  <div class="u-img">
+                    <%= image_tag 'nopicture.png', alt: 'user' %>
+                  </div>
+                  <div class="u-text">
+                    <h4>
+                      <%if user_signed_in? %>
+                        <%= current_user.name %><br>
+                        (ID - <%= current_user.mobile_number %>)
+                      <% end %>
+                    </h4>
+                    <p class="text-muted">
+                      <%#= current_admin.email %>
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <i class="ti-user"></i> User Profile
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_change_password_path(current_user) do %>
+                  <i class="ti-lock"></i> Change Password
+                <% end %>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-power-off"></i> Logout
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

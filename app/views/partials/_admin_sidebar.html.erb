@@ -1,0 +1,79 @@
+<aside class="left-sidebar">
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav">
+        <li class="nav-small-cap">MANAGEMENT</li>
+        <li>
+          <%= link_to dashboard_path, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-gauge"></i>
+            <span class="hide-menu">Dashboard </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi  mdi-account-multiple"></i>
+            <span class="hide-menu">My Account </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-transfer"></i>
+            <span class="hide-menu">Wallet Transfer </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-bank"></i>
+            <span class="hide-menu">Upgrade </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-account-star"></i>
+            <span class="hide-menu">Direct Member </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-share"></i>
+            <span class="hide-menu">Refferal </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi  mdi-logout"></i>
+            <span class="hide-menu">Sign Out </span>
+          <% end %>
+        </li>
+        <!-- <li>
+          <%#= link_to "admin_companies_path", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-account-multiple"></i>
+            <span class="hide-menu">Companies</span>
+          <%# end %>
+        </li>
+        <li>
+          <%#= link_to "admin_campaigns_path", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-account-multiple"></i>
+            <span class="hide-menu">Campaigns </span>
+          <%# end %>
+        </li> 
+        <li>
+          <%#= link_to "admin_team_members_path", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-calendar-multiple-check"></i>
+            <span class="hide-menu">Team Members </span>
+          <%# end %>
+        </li> -->
+        <!-- <li>
+          <%#= link_to "admin_articles_path", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-book"></i>
+            <span class="hide-menu">Articles </span>
+          <%# end %>
+        </li> -->
+      </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+  </div>
+  <!-- End Sidebar scroll-->
+</aside>

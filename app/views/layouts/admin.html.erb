@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Whiz Finance - Admin</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'admin', media: 'all' %>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
+    <%= javascript_include_tag 'admin' %>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="fix-header fix-sidebar card-no-border">
+    <div id="main-wrapper">
+      <%= render partial: 'partials/admin_header' %>
+      <%= render partial: 'partials/admin_sidebar' %>
+
+      <div class="page-wrapper">
+
+        <div class="container-fluid">
+          <%= render 'partials/flash' %>
+          <%= yield %>
+        </div>
+
+        <%= render partial: 'partials/admin_footer' %>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
