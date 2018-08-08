@@ -57,19 +57,48 @@ input::placeholder {
 .footer-text {
   margin-bottom: -7%;
 }
-.table th, td {
-  text-align: center;
-}
-.table thead th {
+.table tbody th {
   font-weight: 900;
 }
 #demo {
   background-color: #51affe;
 }
 .collapsed .fa-angle-down {
-  webkit-transform: rotate(90deg);
   transform: rotate(90deg);
+  margin-top: 7%;
 }
 .fa-angle-down {
-  margin-top: 7%;
+  margin-top: 3%;
+}
+.side-bar-col {
+  background-color: #dce2e4;
+}
+.table-head {
+  font-size: 10px;
+}
+@media screen and (max-width:575px)
+{
+  .dash-table-tr {
+    font-size: 14px;
+  }
+  .footer-text {
+    font-size: 14px;
+    margin-bottom: -25%;
+  }
+}
+@media screen and (min-width:576px) and (max-width: 767px)
+{
+
+}
+@media screen and (min-width:768px) and (max-width: 991px)
+{
+  
+}
+@media screen and (min-width:992px) and (max-width: 1199px)
+{
+  
+}
+@media screen and (min-width:1200px)
+{
+  
 }
