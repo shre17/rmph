@@ -18,32 +18,32 @@
             <i class="fa fa-angle-down float-right hide-menu"></i>
           <% end %>
           <li class="collapse side-bar-col" id="collapse1">
-            <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <%= link_to edit_change_password_path(current_user), class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
               <i class="ti-lock"></i>
               <span class="hide-menu">Change Password </span>
             <% end %>
           </li>
         </li>
         <li>
-          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+          <%= link_to user_wallet_path, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
             <i class="mdi mdi-transfer"></i>
             <span class="hide-menu">Wallet Transfer </span>
           <% end %>
         </li>
         <li>
-          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+          <%= link_to user_upgrade_path, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
             <i class="mdi mdi-bank"></i>
             <span class="hide-menu">Upgrade </span>
           <% end %>
         </li>
         <li>
-          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+          <%= link_to user_my_direct_path, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
             <i class="mdi mdi-account-star"></i>
             <span class="hide-menu">Direct Member </span>
           <% end %>
         </li>
         <li>
-          <%= link_to "#", class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+          <%= link_to user_referral_path, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
             <i class="mdi mdi-share"></i>
             <span class="hide-menu">Refferal </span>
           <% end %>

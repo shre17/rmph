@@ -9,11 +9,11 @@
               <i class="fa fa-lock edit-header-icon d-sm-none d-block mt-2"></i>
             </div>
             <div class="col-md-11 col-9">
-              <h3 class="card-title mb-0 mt-2 ml-3">Change Password</h3>
+              <h3 class="card-title mb-0 mt-2 font-weight-bold">Change Password</h3>
             </div>
           </div>
         </div>
-        <div class="card-body edit-card-body">
+        <div class="card-body">
           <div class="row">
             <div class="col-md-6">
               <%= form_for(@user, :url => { :action => "change_password" } ) do |f| %>

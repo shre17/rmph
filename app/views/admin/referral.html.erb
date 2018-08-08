@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="card cont-shadow">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-1 col-3">
+              <i class="fa fa-user edit-header-icon d-sm-block d-none"></i>
+              <i class="fa fa-user edit-header-icon d-sm-none d-block mt-2"></i>
+            </div>
+            <div class="col-md-11 col-9">
+              <h3 class="card-title mb-0 font-weight-bold">Referral</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <h2>Please share below URL to become sponser</h2>
+            <div class="col-md-6">
+              <label>Referral Code</label><br>
+              <input type="text" value="http://localhost:3000/users/sign_up" class= "form-control" id="myInput">
+            </div>
+          </div>
+          <button class="btn btn-info mt-2" onclick="myCopy()">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function myCopy() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    document.execCommand("copy");
+  }
+</script>

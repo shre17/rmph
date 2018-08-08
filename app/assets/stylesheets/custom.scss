@@ -41,9 +41,6 @@ input::placeholder {
   color: #009688;
   font-size: 60px;
 }
-.edit-card-body {
-  background-color: #ececec;
-}
 .header-logo {
   height: 45px;
 }
@@ -53,9 +50,6 @@ input::placeholder {
 }
 .dark-logo {
   margin-top: -30%;
-}
-.footer-text {
-  margin-bottom: -7%;
 }
 .table tbody th {
   font-weight: 900;
@@ -76,6 +70,9 @@ input::placeholder {
 .table-head {
   font-size: 10px;
 }
+.referral-div{
+  margin-bottom: 24%;
+}
 @media screen and (max-width:575px)
 {
   .dash-table-tr {
@@ -83,7 +80,6 @@ input::placeholder {
   }
   .footer-text {
     font-size: 14px;
-    margin-bottom: -25%;
   }
 }
 @media screen and (min-width:576px) and (max-width: 767px)
