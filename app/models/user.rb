@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          # , authentication_keys: [:login]
 
+  has_one :wallet, dependent: :destroy
+
   attr_writer :login
 
   def login
