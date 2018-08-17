@@ -9,54 +9,47 @@
               <i class="fa fa-user edit-header-icon d-sm-none d-block mt-2"></i>
             </div>
             <div class="col-md-11 col-9">
-              <h3 class="card-title mb-0 font-weight-bold">Upgrade Level Panel</h3>
+              <h3 class="card-title mb-0 font-weight-bold">Transfer Money</h3>
             </div>
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="align-self-center">
-            <h1 class="text-dark text-center upgrade-bal-text">Main Balance 60</h1>
+      <%= form_for @wallet do |f| %>
+        <div class="row">
+          <h2 class="font-weight-bold ml-3 mt-3">Wallet Amount:</h2>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-8 offset-md-2">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Enter Mobile Number</label>
+              </div>
+              <div class="col-md-6 wallet-field">
+                <%= f.text_field :mobile_no, class: "form-control", placeholder: "Enter Mobile Number" %>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <h2 class="font-weight-bold ml-3 mt-3">Upgrade Level</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <select class="form-control select-level" id="sel1">
-              <option>Level 1</option>
-              <option>Level 2</option>
-              <option>Level 3</option>
-              <option>Level 4</option>
-              <option>Level 5</option>
-              <option>Level 6</option>
-              <option>Level 7</option>
-            </select>
+        <div class="row mt-3">
+          <div class="col-md-8 offset-md-2">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Enter Amount</label>
+              </div>
+              <div class="col-md-6 wallet-field">
+                <%= f.text_field :amount, class: "form-control", placeholder: "Enter Amount" %>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <select class="form-control" id="sel2">
-              <option>Amount Rs 10</option>
-              <option>Amount Rs 20</option>
-              <option>Amount Rs 50</option>
-              <option>Amount Rs 100</option>
-              <option>Amount Rs 1000</option>
-              <option>Amount Rs 10000</option>
-              <option>Amount Rs 100000</option>
-            </select>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :transfer_by, value: current_user.name %>
+        <div class="row text-center">
+          <div class="col-md-8 offset-md-2">
+            <%= f.submit "Submit", class: "btn btn-info mt-3" %>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <button class="btn btn-primary btn-block btn-1">Submit</button>
-          </div>
-        </div>
-      </div>
+      <% end %>
       <div class="row mt-5">
         <h2 class="font-weight-bold">Transaction History</h2>
       </div>
