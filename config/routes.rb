@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       patch :change_password
     end 
   end
-  resources :wallets
+  resources :wallet_transactions
   get 'dashboard' => 'admin#dashboard'
   get 'user/referral' => 'admin#referral'
   get 'user/my_direct' => 'admin#direct_team'
