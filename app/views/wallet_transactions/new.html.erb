@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <%= form_for @wallet do |f| %>
+      <%= form_for @transaction do |f| %>
         <div class="row">
           <h2 class="font-weight-bold ml-3 mt-3">Wallet Amount:</h2>
         </div>
@@ -43,7 +43,7 @@
           </div>
         </div>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :transfer_by, value: current_user.name %>
+        <%= f.hidden_field :transfer_by, value: current_user.user_name %>
         <div class="row text-center">
           <div class="col-md-8 offset-md-2">
             <%= f.submit "Submit", class: "btn btn-info mt-3" %>
@@ -69,94 +69,19 @@
             </tr>
           </tbody>
           <tbody>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr class="dash-table-tr">
-              <td>1</td>
-              <td>1</td>
-              <td>10</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
+            <% @transactions.each do |tran| %>
+              <tr class="dash-table-tr">
+                <td><%= tran.id %></td>
+                <td><%= tran.created_at %></td>
+                <td><%= tran.transfer_to %> (<%= tran.user.mobile_number %>)</td>
+                <td><%= tran.amount %></td>
+                <td><%= tran.amount %></td>
+                <td><%= tran.amount %></td>
+                <td><%= tran.amount %></td>
+                <td>Sent <%= tran.amount %> to <%= tran.transfer_to %> (<%= tran.user.mobile_number %>)</td>
+                <td>1</td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>

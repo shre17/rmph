@@ -5,7 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          # , authentication_keys: [:login]
 
-  has_one :wallet, dependent: :destroy
+  has_many :wallet_transactions
+  has_one :wallet, through: :wallet_transactions
+  after_create :create_wallet
+
+  def create_wallet
+    Wallet.create!
+  end 
 
   attr_writer :login
 
