@@ -3,7 +3,7 @@ class WalletTransactionsController < ApplicationController
 
   def new
     @transaction = WalletTransaction.new
-    @transactions = WalletTransaction.all
+    @transactions = current_user.wallet_transactions
   end
 
   def  create

@@ -6,7 +6,12 @@
     <div class="card">
       <div class="card-body">
         <div class="align-self-center">
-          <h2 class="text-dark text-center">Balance + 60</h2>
+          <h2 class="text-dark text-center">
+            <% if current_user.wallet.amount.present? %>
+              Balance + <%= current_user.wallet.amount %></h2>
+            <% else %>
+              Balance 0
+            <% end %>
         </div>
       </div>
     </div>

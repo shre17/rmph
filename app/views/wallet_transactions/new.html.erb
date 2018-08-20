@@ -69,18 +69,20 @@
             </tr>
           </tbody>
           <tbody>
-            <% @transactions.each do |tran| %>
-              <tr class="dash-table-tr">
-                <td><%= tran.id %></td>
-                <td><%= tran.created_at %></td>
-                <td><%= tran.transfer_to %> (<%= tran.user.mobile_number %>)</td>
-                <td><%= tran.amount %></td>
-                <td><%= tran.amount %></td>
-                <td><%= tran.amount %></td>
-                <td><%= tran.amount %></td>
-                <td>Sent <%= tran.amount %> to <%= tran.transfer_to %> (<%= tran.user.mobile_number %>)</td>
-                <td>1</td>
-              </tr>
+            <% if !current_user.wallet_transactions.nil? %>
+              <% @transactions.each do |tran| %>
+                <tr class="dash-table-tr">
+                  <td><%= tran.id %></td>
+                  <td><%= tran.created_at %></td>
+                  <td><%= tran.transfer_to %></td>
+                  <td><%= tran.amount %></td>
+                  <td><%= tran.amount %></td>
+                  <td><%= tran.amount %></td>
+                  <td><%= tran.amount %></td>
+                  <td>Sent <%= tran.amount %> to <%= tran.transfer_to %></td>
+                  <td>1</td>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>
