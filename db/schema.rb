@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20180820052901) do
     t.string "amount"
     t.string "transfer_by"
     t.string "transfer_to"
-<<<<<<< Updated upstream
     t.integer "user_id"
     t.integer "wallet_id"
     t.datetime "created_at", null: false
@@ -60,9 +59,6 @@ ActiveRecord::Schema.define(version: 20180820052901) do
 
   create_table "wallets", force: :cascade do |t|
     t.string "amount"
-=======
-    t.bigint "user_id"
->>>>>>> Stashed changes
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
