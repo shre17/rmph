@@ -1,0 +1,115 @@
+<%= form_for :wallet_transaction, url: :create_level_transactions, method: :post, html: {class: "level-form"} do |f| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-12">
+        <div class="card cont-shadow">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-1 col-3">
+                <i class="fa fa-user edit-header-icon d-sm-block d-none"></i>
+                <i class="fa fa-user edit-header-icon d-sm-none d-block mt-2"></i>
+              </div>
+              <div class="col-md-11 col-9">
+                <h3 class="card-title mb-0 font-weight-bold">Upgrade Level Panel</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="align-self-center">
+              <h1 class="text-dark text-center upgrade-bal-text">Main Balance <%= current_user.wallet.amount %></h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h2 class="font-weight-bold ml-3 mt-3">Upgrade Level</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.select :level, options_for_select(["Level One 1", "Level Two 2", "Level Three 3", "Level Four 4", "Level Five 5", "Level Six 6", "Level Seven 7"]), {}, {class: "form-control select-level"} %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.select :amount, options_for_select(["Amount Rs 10", "Amount Rs 100", "Amount Rs 500", "Amount Rs 1000" ]), {}, {class: "form-control"}%>
+            </div>
+          </div>
+          <%= f.hidden_field :user_id, value: current_user.id%>
+          <%= f.hidden_field :wallet_id, value: current_user.wallet.id%>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.submit "Submit", class: "btn btn-primary btn-block btn-1"%>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <h2 class="font-weight-bold">Transaction History</h2>
+        </div>
+        <div class="table-responsive text-center">
+          <table class="table table-hover">
+            <tbody>
+              <tr class="dash-table-tr">
+                <th>Sno</th>
+                <th>datetime</th>
+                <th>To</th>
+                <th>Debit</th>
+                <th>Credit</th>
+                <th>Open Balance</th>
+                <th>Close Balance</th>
+                <th>Remark</th>
+                <th>Status</th>
+              </tr>
+            </tbody>
+            <tbody>
+              <% if !current_user.wallet_transactions.nil? %>
+                <% @transactions.each do |tran| %>
+                  <tr class="dash-table-tr">
+                    <td><%= tran.id %></td>
+                    <td><%= tran.created_at %></td>
+                    <td><%= tran.transfer_to %></td>
+                    <td><%= tran.debit %></td>
+                    <td><%= tran.credit %></td>
+                    <td><%= tran.open_balance %></td>
+                    <td><%= tran.close_balance %></td>
+                    <td><%= tran.remark %></td>
+                    <td><%= tran.status %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#upgrade_level_level").change(function() {
+      var val = $(this).val();
+      if (val == "Level One 1") {
+          $("#upgrade_level_amount").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
+      } else if (val == "Level Two 2") {
+          $("#upgrade_level_amount").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
+
+      } else if (val == "Level Three 3") {
+          $("#upgrade_level_amount").html("<option value='test'>Amount Rs 20</option><option value='test2'>Amount Rs 200</option><option value='test3'>Amount Rs 1000</option><option value='test4'>Amount Rs 2000</option>");
+
+      } else if (val == "Level Four 4") {
+        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 80</option><option value='test2'>Amount Rs 800</option><option value='test3'>Amount Rs 4000</option>");
+
+      } else if (val == "Level Five 5") {
+        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 640</option>");
+
+      } else if (val == "Level Six 6") {
+        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 10240</option>");
+
+      } else if (val == "Level Seven 7") {
+        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 327680</option>");
+
+      }
+    });
+  });
+</script>
