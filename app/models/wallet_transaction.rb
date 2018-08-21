@@ -33,7 +33,12 @@ class WalletTransaction < ApplicationRecord
   def self.deduct_money(current_user, transaction)
     user = User.find_by(mobile_number: current_user.mobile_number)
     wallet = Wallet.find_by(user_id: user.id)
-    total_amount = wallet.amount.to_i - transaction.amount.to_i
+    if transaction.level.present?
+      level_amount = transaction.amount.split(" ")[2]
+      total_amount = wallet.amount.to_i - level_amount.to_i
+    else
+      total_amount = wallet.amount.to_i - transaction.amount.to_i
+    end
     wallet.update_attributes(amount: total_amount)
   end
 
