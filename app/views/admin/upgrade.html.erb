@@ -27,27 +27,24 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <select class="form-control select-level" id="sel1">
-              <option>Level 1</option>
-              <option>Level 2</option>
-              <option>Level 3</option>
-              <option>Level 4</option>
-              <option>Level 5</option>
-              <option>Level 6</option>
-              <option>Level 7</option>
+            <select class="form-control select-level" id="type">
+              <option value="item1">Level One 1</option>
+              <option value="item2">Level Two 2</option>
+              <option value="item3">Level Three 3</option>
+              <option value="item4">Level Four 4</option>
+              <option value="item5">Level Five 5</option>
+              <option value="item6">Level Six 6</option>
+              <option value="item7">Level Seven 7</option>
             </select>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <select class="form-control" id="sel2">
+            <select class="form-control" id="size">
               <option>Amount Rs 10</option>
-              <option>Amount Rs 20</option>
-              <option>Amount Rs 50</option>
               <option>Amount Rs 100</option>
+              <option>Amount Rs 500</option>
               <option>Amount Rs 1000</option>
-              <option>Amount Rs 10000</option>
-              <option>Amount Rs 100000</option>
             </select>
           </div>
         </div>
@@ -170,3 +167,32 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#type").change(function() {
+      var val = $(this).val();
+      if (val == "item1") {
+          $("#size").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
+      } else if (val == "item2") {
+          $("#size").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
+
+      } else if (val == "item3") {
+          $("#size").html("<option value='test'>Amount Rs 20</option><option value='test2'>Amount Rs 200</option><option value='test3'>Amount Rs 1000</option><option value='test4'>Amount Rs 2000</option>");
+
+      } else if (val == "item4") {
+        $("#size").html("<option value='test'>Amount Rs 80</option><option value='test2'>Amount Rs 800</option><option value='test3'>Amount Rs 4000</option>");
+
+      } else if (val == "item5") {
+        $("#size").html("<option value='test'>Amount Rs 640</option>");
+
+      } else if (val == "item6") {
+        $("#size").html("<option value='test'>Amount Rs 10240</option>");
+
+      } else if (val == "item7") {
+        $("#size").html("<option value='test'>Amount Rs 327680</option>");
+
+      }
+    });
+  });
+</script>

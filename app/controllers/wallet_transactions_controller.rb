@@ -18,7 +18,7 @@ class WalletTransactionsController < ApplicationController
           transfer_to = WalletTransaction.check_transfer_to(@transaction) 
 
           # Update Transaction histroy of sender
-          @transaction.update_attributes(transfer_to: transfer_to.user_name, debit: @transaction.amount.to_i, credit: 0, open_balance: current_user.wallet.amount, remark: "Sent #{@transaction.amount} to #{transfer_to.user_name}", status: 1)
+          @transaction.update_attributes(transfer_to: transfer_to.user_name, debit: @transaction.amount.to_i, credit: 0, open_balance: current_user.wallet.amount, close_balance: 0, remark: "Sent #{@transaction.amount} to #{transfer_to.user_name}", status: 1)
 
           # Update Transaction histroy of recevier
           WalletTransaction.transaction_histroy(current_user, @transaction)
