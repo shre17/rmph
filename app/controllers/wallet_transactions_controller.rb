@@ -11,6 +11,7 @@ class WalletTransactionsController < ApplicationController
 
     # Check if valid sponser
     @mob = WalletTransaction.check_user(@transaction)
+    # Check if user has enough amount in wallet for transaction
     if @transaction.amount <= current_user.wallet.amount 
       if @mob == true
         respond_to do |format|
