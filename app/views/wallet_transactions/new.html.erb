@@ -75,12 +75,12 @@
                 <tr class="dash-table-tr">
                   <td><%= tran.id %></td>
                   <td><%= tran.created_at %></td>
-                  <td><%= tran.transfer_to %></td>
+                  <td><%= tran.transfer_to %>(<%= tran.mobile_no %>)</td>
                   <td><%= tran.debit %></td>
                   <td><%= tran.credit %></td>
                   <td><%= tran.open_balance %></td>
                   <td><%= tran.close_balance %></td>
-                  <td><%= tran.remark %></td>
+                  <td><%= tran.remark %>(<%= tran.mobile_no %>)</td>
                   <td><%= tran.status %></td>
                 </tr>
               <% end %>
