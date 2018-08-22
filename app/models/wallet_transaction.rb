@@ -19,7 +19,8 @@ class WalletTransaction < ApplicationRecord
 
   def self.transaction_histroy(current_user, transaction)
     user = User.find_by(mobile_number: transaction.mobile_no)
-    WalletTransaction.create(mobile_no: current_user.mobile_number, amount: transaction.amount, transfer_by: current_user.user_name, transfer_to: user.user_name, user_id: user.id, wallet_id: user.wallet.id, debit: 0, credit: transaction.amount, open_balance: user.wallet.amount, close_balance: 0, remark: "Recevied #{transaction.amount} from #{current_user.user_name}", status: 1)
+    user_wallet = WalletTransaction.create(mobile_no: current_user.mobile_number, amount: transaction.amount, transfer_by: current_user.user_name, transfer_to: user.user_name, user_id: user.id, wallet_id: user.wallet.id, debit: 0, credit: transaction.amount, open_balance: user.wallet.amount, close_balance: 0, remark: "Recevied #{transaction.amount} from #{current_user.user_name}", status: 1)
+    return user_wallet
   end
 
   def self.add_money(current_user, transaction)
@@ -27,6 +28,7 @@ class WalletTransaction < ApplicationRecord
     wallet = Wallet.find_by(user_id: user.id)
     total_amount = wallet.amount.to_i + transaction.amount.to_i
     wallet.update_attributes(amount: total_amount)
+    return total_amount
   end
 
 
@@ -40,6 +42,7 @@ class WalletTransaction < ApplicationRecord
       total_amount = wallet.amount.to_i - transaction.amount.to_i
     end
     wallet.update_attributes(amount: total_amount)
+    return total_amount
   end
 
 end

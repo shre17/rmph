@@ -10,7 +10,7 @@ class User < ApplicationRecord
   after_create :create_wallet
 
   def create_wallet
-    Wallet.create(user_id: self.id, amount: 10)
+    Wallet.create(user_id: self.id, amount: 20)
   end 
 
   attr_writer :login
