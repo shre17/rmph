@@ -87,27 +87,27 @@
 <% end %>
 <script type="text/javascript">
   $(document).ready(function() {
-    $("#upgrade_level_level").change(function() {
+    $("#wallet_transaction_level").change(function() {
       var val = $(this).val();
       if (val == "Level One 1") {
-          $("#upgrade_level_amount").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
+          $("#wallet_transaction_amount").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
       } else if (val == "Level Two 2") {
-          $("#upgrade_level_amount").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
+          $("#wallet_transaction_amount").html("<option value='test'>Amount Rs 10</option><option value='test2'>Amount Rs 10</option><option value='test3'>Amount Rs 500</option><option value='test4'>Amount Rs 1000</option>");
 
       } else if (val == "Level Three 3") {
-          $("#upgrade_level_amount").html("<option value='test'>Amount Rs 20</option><option value='test2'>Amount Rs 200</option><option value='test3'>Amount Rs 1000</option><option value='test4'>Amount Rs 2000</option>");
+          $("#wallet_transaction_amount").html("<option value='test'>Amount Rs 20</option><option value='test2'>Amount Rs 200</option><option value='test3'>Amount Rs 1000</option><option value='test4'>Amount Rs 2000</option>");
 
       } else if (val == "Level Four 4") {
-        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 80</option><option value='test2'>Amount Rs 800</option><option value='test3'>Amount Rs 4000</option>");
+        $("#wallet_transaction_amount").html("<option value='test'>Amount Rs 80</option><option value='test2'>Amount Rs 800</option><option value='test3'>Amount Rs 4000</option>");
 
       } else if (val == "Level Five 5") {
-        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 640</option>");
+        $("#wallet_transaction_amount").html("<option value='test'>Amount Rs 640</option>");
 
       } else if (val == "Level Six 6") {
-        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 10240</option>");
+        $("#wallet_transaction_amount").html("<option value='test'>Amount Rs 10240</option>");
 
       } else if (val == "Level Seven 7") {
-        $("#upgrade_level_amount").html("<option value='test'>Amount Rs 327680</option>");
+        $("#wallet_transaction_amount").html("<option value='test'>Amount Rs 327680</option>");
 
       }
     });

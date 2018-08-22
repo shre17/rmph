@@ -73,13 +73,6 @@ input::placeholder {
 .referral-div{
   margin-bottom: 24%;
 }
-.select-level{
-  margin-left: 11%;
-}
-.btn-1 {
-  margin-left: -10.5%;
-  padding-bottom: 4px;
-}
 @media screen and (max-width:575px)
 {
   .dash-table-tr {
@@ -105,5 +98,12 @@ input::placeholder {
 {
   .wallet-field {
     margin-left: -20%;
+  }
+  .select-level{
+    margin-left: 11%;
+  }
+  .btn-1 {
+    margin-left: -10.5%;
+    padding-bottom: 4px;
   }
 }

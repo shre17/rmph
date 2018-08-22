@@ -1,8 +1,15 @@
 <div id="flash" class='text-center'>
   <% flash.each do |key, value| %>
-    <div class="notice">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      <%= value %>
-    </div>
+    <% if key == "alert"%>
+      <%= content_tag :div, class: "alert alert-danger" do %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= value %>
+      <% end %>
+    <% else %>
+      <%= content_tag :div, class: "alert alert-success" do %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= value %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

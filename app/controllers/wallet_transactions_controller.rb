@@ -42,10 +42,10 @@ class WalletTransactionsController < ApplicationController
           end
         end
       else
-        redirect_to new_wallet_transaction_path, notice: "Not a valid sponser."
+        redirect_to new_wallet_transaction_path, alert: "Not a valid sponser."
       end
     else
-      redirect_to new_wallet_transaction_path, notice: "You don't have enough balance."
+      redirect_to new_wallet_transaction_path, alert: "You don't have enough balance."
     end
   end
 
@@ -74,7 +74,7 @@ class WalletTransactionsController < ApplicationController
         end
       end
     else
-      redirect_to levels_new_path, notice: "You don't have enough balance."
+      redirect_to levels_new_path, alert: "You don't have enough balance."
     end
   end
 
