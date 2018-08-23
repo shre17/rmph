@@ -62,11 +62,11 @@
                 <th>Status</th>
               </tr>
             </tbody>
-            <tbody>
+            <tbody class="table-body">
               <% if !current_user.wallet_transactions.nil? %>
                 <% @transactions.each do |tran| %>
                   <tr class="dash-table-tr">
-                    <td><%= tran.id %></td>
+                    <td class="table-td"></td>
                     <td><%= tran.created_at %></td>
                     <td><%= tran.transfer_to %></td>
                     <td><%= tran.debit %></td>

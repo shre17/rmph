@@ -73,6 +73,14 @@ input::placeholder {
 .referral-div{
   margin-bottom: 24%;
 }
+.table-body {
+  counter-reset: my-sec-counter;
+}
+.table-td::before {
+  /* Increment "my-sec-counter" by 1 */
+  counter-increment: my-sec-counter;
+  content: counter(my-sec-counter);
+}
 @media screen and (max-width:575px)
 {
   .dash-table-tr {
