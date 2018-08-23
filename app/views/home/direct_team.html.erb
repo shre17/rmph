@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="card cont-shadow">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-1 col-3">
+              <i class="fa fa-users edit-header-icon d-sm-block d-none"></i>
+              <i class="fa fa-users edit-header-icon d-sm-none d-block mt-2"></i>
+            </div>
+            <div class="col-md-11 col-9">
+              <h3 class="card-title mb-0 font-weight-bold">Direct Team</h3>
+            </div>
+          </div>
+        </div>
+        <div class="font-weight-bold mt-5">Direct Team</div>
+        <div class="table-responsive text-center mt-3">
+          <table class="table table-striped table-bordered">
+            <tbody>
+              <tr class="table-color">
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Joining Date</th>
+                <th>Amount</th>
+                <th>Level 1</th>
+                <th>Level 2</th>
+                <th>Level 3 </th>
+                <th>Level 4</th>
+                <th>Level 5</th>
+                <th>Level 6</th>
+                <th>Level 7</th>
+              </tr>
+            </tbody>
+            <tbody>
+              <% if @direct_team.sponser_id.present?%>
+                <tr class="dash-table-tr">
+                  <td><%= @direct_team.sponser_id %></td>
+                  <td><%= @sponser.user_name %></td>
+                  <td><%= @sponser.created_at.strftime("%d %b %Y")%></td>
+                  <% if @transaction_amount.present? %>
+                    <td><%= @transaction_amount.amount %></td>
+                  <% else %>
+                    <td>0</td>
+                  <% end %>
+                  <td>Yes</td>
+                  <td>No</td>
+                  <td>No</td>
+                  <td>No</td>
+                  <td>No</td>
+                  <td>No</td>
+                  <td>No</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
