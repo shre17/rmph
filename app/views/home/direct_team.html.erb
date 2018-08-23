@@ -32,7 +32,7 @@
               </tr>
             </tbody>
             <tbody>
-              <% if @direct_team.sponser_id.present?%>
+              <% if current_user.present? && @direct_team.sponser_id.present?%>
                 <tr class="dash-table-tr">
                   <td><%= @direct_team.sponser_id %></td>
                   <td><%= @sponser.user_name %></td>

@@ -11,8 +11,11 @@ class WalletTransactionsController < ApplicationController
 
     # Check if valid sponser
     @mob = WalletTransaction.check_user(@transaction)
+
+    half_amount = current_user.wallet.amount.to_i/2
+
     # Check if user has enough amount in wallet for transaction
-    if @transaction.amount <= current_user.wallet.amount 
+    if @transaction.amount.to_i == half_amount
       if @mob == true
         respond_to do |format|
           if @transaction.save
@@ -60,8 +63,10 @@ class WalletTransactionsController < ApplicationController
 
     level = @transaction.level.split(" ")[2]
     amount = @transaction.amount.split(" ")[2]
+    half_amount = current_user.wallet.amount.to_i/2
 
-    if amount <= current_user.wallet.amount
+    if amount.to_i == half_amount
+      byebug
       respond_to do |format|
         if @transaction.save
           # Dedcut tranfered money
