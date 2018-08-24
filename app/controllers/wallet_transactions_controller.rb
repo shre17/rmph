@@ -10,13 +10,17 @@ class WalletTransactionsController < ApplicationController
   def  create
     @transaction = WalletTransaction.new(wallet_transaction_params)
 
+    # Check if current_user has atleast 2 child_users
+    @child_users = User.where(sponser_id: current_user.mobile_number).count
+
     # Check if valid sponser
     @mob = WalletTransaction.check_user(@transaction)
 
+    # Check if current_user sending half of the wallet amount
     half_amount = current_user.wallet.amount.to_i/2
 
     # Check if user has enough amount in wallet for transaction
-    if @transaction.amount.to_i == half_amount
+    if @transaction.amount.to_i == half_amount && @child_users >= 2
       if @mob == true
         respond_to do |format|
           if @transaction.save
@@ -62,11 +66,17 @@ class WalletTransactionsController < ApplicationController
   def create_level_transactions
     @transaction = WalletTransaction.new(wallet_transaction_params)
 
+    # Check if current_user has atleast 2 child_users
+    @child_users = User.where(sponser_id: current_user.mobile_number).count
+
+    # To get the level and amount from string
     level = @transaction.level.split(" ")[2]
     amount = @transaction.amount.split(" ")[2]
+
+    # Check if current_user sending half of the wallet amount
     half_amount = current_user.wallet.amount.to_i/2
 
-    if amount.to_i == half_amount
+    if amount.to_i == half_amount && @child_users >= 2
       byebug
       respond_to do |format|
         if @transaction.save
