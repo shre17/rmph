@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :wallet_transactions
   get '/levels/new' => "wallet_transactions#upgrade_level"
   get 'user/my_direct' => "home#direct_team"
+  get '/dashboard' => "home#profit_details"
   post '/create_level_transactions' => "wallet_transactions#create_level_transactions"
   get 'dashboard' => 'admin#dashboard'
   get 'user/referral' => 'admin#referral'
