@@ -32,24 +32,22 @@
               </tr>
             </tbody>
             <tbody>
-              <% if current_user.present? && @direct_team.sponser_id.present?%>
-                <tr class="dash-table-tr">
-                  <td><%= @direct_team.sponser_id %></td>
-                  <td><%= @sponser.user_name %></td>
-                  <td><%= @sponser.created_at.strftime("%d %b %Y")%></td>
-                  <% if @transaction_amount.present? %>
-                    <td><%= @transaction_amount.amount %></td>
-                  <% else %>
+              <% if current_user.present? && !@sponser.nil?%>
+                <% @sponser.each do |sponser|%>
+                  <tr class="dash-table-tr">
+                    <td><%= sponser.mobile_number %></td>
+                    <td><%= sponser.user_name %></td>
+                    <td><%= sponser.created_at.strftime("%d %b %Y")%></td>
                     <td>0</td>
-                  <% end %>
-                  <td>Yes</td>
-                  <td>No</td>
-                  <td>No</td>
-                  <td>No</td>
-                  <td>No</td>
-                  <td>No</td>
-                  <td>No</td>
-                </tr>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>

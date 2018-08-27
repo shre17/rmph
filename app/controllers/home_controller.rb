@@ -7,14 +7,13 @@ class HomeController < ApplicationController
 
   def direct_team
     @direct_team = current_user
-    if @direct_team.sponser_id.present?
-      @sponser = User.find_by(mobile_number: @direct_team.sponser_id) 
-      @transaction_amount = WalletTransaction.find_by(mobile_no: @sponser.mobile_number,transfer_by: current_user.user_name, transfer_to: @sponser.user_name)
-      @level = WalletTransaction.where('level = ? ', "1")
-    end
+    @sponser = User.where(sponser_id: current_user.mobile_number) 
+    # @transaction_amount = WalletTransaction.find_by(mobile_no: @sponser.mobile_number,transfer_by: current_user.user_name, transfer_to: @sponser.user_name)
+    # @level = WalletTransaction.where('level = ? ', "1")
   end
 
   def profit_details
-    @child_users = User.where(sponser_id: current_user.mobile_number).count
+    @child_users = User.where(sponser_id: current_user.mobile_number)
+    @total_users = @child_users.count
   end
 end

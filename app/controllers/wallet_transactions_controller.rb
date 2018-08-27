@@ -20,7 +20,8 @@ class WalletTransactionsController < ApplicationController
     half_amount = current_user.wallet.amount.to_i/2
 
     # Check if user has enough amount in wallet for transaction
-    if @transaction.amount.to_i == half_amount && @child_users >= 2
+    # if @transaction.amount.to_i == half_amount && @child_users >= 2
+    if @transaction.amount.to_i <= current_user.wallet.amount.to_i
       if @mob == true
         respond_to do |format|
           if @transaction.save
@@ -76,14 +77,14 @@ class WalletTransactionsController < ApplicationController
     # Check if current_user sending half of the wallet amount
     half_amount = current_user.wallet.amount.to_i/2
 
-    if amount.to_i == half_amount && @child_users >= 2
-      byebug
+    # if amount.to_i == half_amount && @child_users >= 2
+    if @transaction.amount.to_i <= current_user.wallet.amount.to_i
       respond_to do |format|
         if @transaction.save
           # Dedcut tranfered money
           dedcut_money = WalletTransaction.deduct_money(current_user, @transaction)
 
-          @transaction.update_attributes(level: level, amount: amount, transfer_to: level, debit: amount, credit: 0, open_balance: current_user.wallet.amount, close_balance: dedcut_money, remark: "Level #{level} Remain", status: 1)
+          @transaction.update_attributes(level: level, amount: amount, transfer_to: level, debit: amount, credit: 0, open_balance: current_user.wallet.amount, close_balance: dedcut_money, remark: "Level #{level} Remain #{amount*@child_users}", status: 1)
 
           format.html { redirect_to levels_new_path, notice: "Successfully upgraded to." }
         else
