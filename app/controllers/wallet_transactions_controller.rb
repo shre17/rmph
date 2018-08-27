@@ -16,14 +16,12 @@ class WalletTransactionsController < ApplicationController
     # Check if valid sponser
     @mob = WalletTransaction.check_user(@transaction)
 
-    # Check if current_user sending half of the wallet amount
-    half_amount = current_user.wallet.amount.to_i/2
-
     # Check if user has enough amount in wallet for transaction
     if @transaction.amount.to_i <= current_user.wallet.amount.to_i
       if @mob == true
         respond_to do |format|
           if @transaction.save
+
             # Check the transfer_to user
             transfer_to = WalletTransaction.check_transfer_to(@transaction) 
 
@@ -72,9 +70,6 @@ class WalletTransactionsController < ApplicationController
     # To get the level and amount from string
     level = @transaction.level.split(" ")[2]
     amount = @transaction.amount.split(" ")[2]
-
-    # Check if current_user sending half of the wallet amount
-    half_amount = current_user.wallet.amount.to_i/2
 
     if amount.to_i <= current_user.wallet.amount.to_i
       respond_to do |format|
