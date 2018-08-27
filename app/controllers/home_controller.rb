@@ -19,6 +19,6 @@ class HomeController < ApplicationController
     # @sum = 0
     # @direct_income.each do |i|
     #   @sum += i.to_i
-    end
+    # end
   end
 end
