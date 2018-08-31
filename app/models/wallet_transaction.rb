@@ -45,4 +45,12 @@ class WalletTransaction < ApplicationRecord
     return total_amount
   end
 
+  def self.check_transaction(current_user, transaction)
+    parent = User.where(mobile_number: current_user.sponser_id)
+    if current_user.sponser_id.present? && transaction.mobile_no == current_user.sponser_id
+      current_user.update(active: true)
+      return true
+    end
+  end
+
 end

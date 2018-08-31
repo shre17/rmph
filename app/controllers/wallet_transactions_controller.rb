@@ -10,49 +10,55 @@ class WalletTransactionsController < ApplicationController
   def  create
     @transaction = WalletTransaction.new(wallet_transaction_params)
 
+    # Check if user is active or not
+    @check_transaction_of_user = WalletTransaction.check_transaction(current_user, @transaction)
     # Check if current_user has atleast 2 child_users
     @child_users = User.where(sponser_id: current_user.mobile_number).count
 
     # Check if valid sponser
     @mob = WalletTransaction.check_user(@transaction)
 
-    # Check if user has enough amount in wallet for transaction
-    if @transaction.amount.to_i <= current_user.wallet.amount.to_i
-      if @mob == true
-        respond_to do |format|
-          if @transaction.save
+    if current_user.active == true 
+      # Check if user has enough amount in wallet for transaction
+      if @transaction.amount.to_i <= current_user.wallet.amount.to_i
+        if @mob == true
+          respond_to do |format|
+            if @transaction.save
 
-            # Check the transfer_to user
-            transfer_to = WalletTransaction.check_transfer_to(@transaction) 
+              # Check the transfer_to user
+              transfer_to = WalletTransaction.check_transfer_to(@transaction) 
 
-            # Update Transaction histroy of sender
-            @transaction.update_attributes(transfer_to: transfer_to.user_name, debit: @transaction.amount.to_i, credit: 0, open_balance: current_user.wallet.amount, close_balance: 0, remark: "Sent #{@transaction.amount} to #{transfer_to.user_name}", status: 1)
+              # Update Transaction histroy of sender
+              @transaction.update_attributes(transfer_to: transfer_to.user_name, debit: @transaction.amount.to_i, credit: 0, open_balance: current_user.wallet.amount, close_balance: 0, remark: "Sent #{@transaction.amount} to #{transfer_to.user_name}", status: 1)
 
-            # Update Transaction histroy of recevier
-            @user_transaction = WalletTransaction.transaction_histroy(current_user, @transaction)
+              # Update Transaction histroy of recevier
+              @user_transaction = WalletTransaction.transaction_histroy(current_user, @transaction)
 
-            # Add tranfered money
-            add_money = WalletTransaction.add_money(current_user, @transaction)
+              # Add tranfered money
+              add_money = WalletTransaction.add_money(current_user, @transaction)
 
-            # Dedcut tranfered money
-            dedcut_money = WalletTransaction.deduct_money(current_user, @transaction)
+              # Dedcut tranfered money
+              dedcut_money = WalletTransaction.deduct_money(current_user, @transaction)
 
-            # update close balance of sender
-            @transaction.update(close_balance: dedcut_money)
+              # update close balance of sender
+              @transaction.update(close_balance: dedcut_money)
 
-            #update close balance of recevier
-            @user_transaction.update(close_balance: add_money)
+              #update close balance of recevier
+              @user_transaction.update(close_balance: add_money)
 
-            format.html { redirect_to new_wallet_transaction_path, notice: "Successfully transfer to #{transfer_to.user_name}." }
-          else
-            format.html { render 'new' }
+              format.html { redirect_to new_wallet_transaction_path, notice: "Successfully transfer to #{transfer_to.user_name}." }
+            else
+              format.html { render 'new' }
+            end
           end
+        else
+          redirect_to new_wallet_transaction_path, alert: "Not a valid sponser."
         end
       else
-        redirect_to new_wallet_transaction_path, alert: "Not a valid sponser."
+        redirect_to new_wallet_transaction_path, alert: "You don't have enough balance."
       end
     else
-      redirect_to new_wallet_transaction_path, alert: "You don't have enough balance."
+      redirect_to new_wallet_transaction_path, alert: "Your account is not active yet."
     end
   end
 
