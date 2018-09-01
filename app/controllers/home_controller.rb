@@ -15,6 +15,13 @@ class HomeController < ApplicationController
   def profit_details
     @child_users = User.where(sponser_id: current_user.mobile_number)
     @total_users = @child_users.count
+    @child_users.each do |user|
+      @direct_income_user = current_user.wallet_transactions.find_by(transfer_by: user.user_name, mobile_no: user.mobile_number)
+      if !@direct_income_user.nil?
+        @direct_income = @direct_income_user.amount
+        @total_income = @total_income.to_i + @direct_income.to_i
+      end
+    end
     # @direct_income = WalletTransaction.where(transfer_to: current_user.user_name).map{|a| a.amount}
     # @sum = 0
     # @direct_income.each do |i|

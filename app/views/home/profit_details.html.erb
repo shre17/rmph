@@ -34,7 +34,11 @@
               <tr class="dash-table-tr">
                 <td>0</td>
                 <td><%= @total_users %></td>
-                <td>10</td>
+                <% if @total_income.nil? %>
+                  <td>0</td>
+                <% else %>
+                  <td><%= @total_income.to_i %></td>
+                <% end %>
                 <td>10</td>
                 <td>0</td>
                 <td>0</td>
