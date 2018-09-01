@@ -39,7 +39,7 @@
                 <% else %>
                   <td><%= @total_income.to_i %></td>
                 <% end %>
-                <td>10</td>
+                <td>0</td>
                 <td>0</td>
                 <td>0</td>
               </tr>
@@ -47,7 +47,7 @@
                 <td>1</td>
                 <td>0</td>
                 <td>10</td>
-                <td>10</td>
+                <td>0</td>
                 <td>0</td>
                 <td>0</td>
               </tr>
@@ -55,7 +55,7 @@
                 <td>2</td>
                 <td>0</td>
                 <td>0</td>
-                <td>40</td>
+                <td>0</td>
                 <td>0</td>
                 <td>0</td>
               </tr>
@@ -102,8 +102,12 @@
               <tr class="dash-table-tr">
                 <td>Total</td>
                 <td><%= @total_users %></td>
-                <td>10</td>
-                <td>50</td>
+                <% if @total_income.nil? %>
+                  <td>0</td>
+                <% else %>
+                  <td><%= @total_income.to_i %></td>
+                <% end %>
+                <td>0</td>
                 <td>0</td>
                 <td>0</td>
               </tr>
